@@ -3,20 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 
 class ApiController extends Controller
 {
-    /**
-     * request 实例
-     * @var
-     */
-    protected $request;
-
-    public function __construct(Request $request)
-    {
-        $this->request = $request;
-    }
 
     /**
      * 操作成功返回的数据
@@ -57,7 +46,7 @@ class ApiController extends Controller
         $result = [
             'code' => $code,
             'msg'  => $msg,
-            'time' => $this->request->server('REQUEST_TIME'),
+            'time' => request()->server('REQUEST_TIME'),
             'data' => $data,
         ];
         if (isset($header['statuscode'])) {
